@@ -5,7 +5,7 @@
 // github: https://github.com/tragdate
 
 const { WebcastPushConnection } = require('tiktok-live-connector');
-const { LiveChat } = require("youtube-chat")
+const { LiveChat } = require('youtube-chat')
 const util = require('util');
 const minimist = require('minimist');
 var tw = require('twitch-webchat');
