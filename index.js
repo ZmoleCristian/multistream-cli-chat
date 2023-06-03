@@ -9,7 +9,7 @@ const { LiveChat } = require("youtube-chat")
 const util = require('util');
 const minimist = require('minimist');
 var tw = require('twitch-webchat');
-
+console.clear();
 
 const args = minimist(process.argv.slice(2));
 
@@ -56,32 +56,32 @@ var controls = tw.start( channelName, function (err, message) {
 let tiktokLiveConnection = new WebcastPushConnection(tiktokUsername);
 
 tiktokLiveConnection.connect().then(state => {
-    console.info(`Connected to ${tiktokUsername}'s live chat`);
+    console.info(` \x1b[40m\x1b[37m \x1b[0m Connected to ${tiktokUsername}'s live chat`);
 }).catch(err => {
     console.error('Failed to connect', err);
 })
 tiktokLiveConnection.on('chat', data => {
     const wrappedText = wrapText(` \x1b[40m\x1b[37m \x1b[0m ${data.uniqueId}: ${data.comment}`, yourWidth);
     console.log(wrappedText);
-
-
-
 })
+
 tiktokLiveConnection.on('member', data => {
-    console.log(` \x1b[40m\x1b[37m \x1b[0m a intrat ${data.uniqueId}`);
+    console.log(` \x1b[40m\x1b[37m \x1b[0m ${data.uniqueId} just joined`);
+})
+
+tiktokLiveConnection.on('like', data => {
+    console.log(`${data.uniqueId} sent ${data.likeCount} likes, total likes: ${data.totalLikeCount}`);
 })
 
 tiktokLiveConnection.on('gift', data => {
     if (data.giftType === 1 && !data.repeatEnd) {
         // Streak in progress => show only temporary
-        console.log(` \x1b[40m\x1b[37m \x1b[0m ${data.uniqueId} trimite ${data.giftName} x${data.repeatCount}`);
+        console.log(` \x1b[40m\x1b[37m \x1b[0m ${data.uniqueId} gifted ${data.giftName} x${data.repeatCount}`);
     } else {
         // Streak ended or non-streakable gift => process the gift with final repeat_count
-        console.log(` \x1b[40m\x1b[37m \x1b[0m ${data.uniqueId} trimite ${data.giftName} x${data.repeatCount}`);
+        console.log(` \x1b[40m\x1b[37m \x1b[0m ${data.uniqueId} gifted ${data.giftName} x${data.repeatCount}`);
     }
 })
-
-
 
 
 youtubeChat.start().then(ok => {

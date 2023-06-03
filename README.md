@@ -12,7 +12,7 @@ A command-line interface application that connects to YouTube live chat, TikTok 
 
 - Connects to YouTube, TikTok, and Twitch chats simultaneously
 - Display chat messages in the console with different colors for each platform
-- Resizes chat messages automatically to fit the console width on startup
+- Resizes chat messages automatically to fit the console width for new messages
 
 ## Requirements
 
@@ -54,6 +54,12 @@ For example:
 ```
 multistream-cli-chat --yt="UC3LAmF5-BefGszU5rtYWCTw" --tw=my_twitch_channel --tt=my_tiktok_username
 ```
+## TODO
+
+- Resize all messages on window resize
+- Use the offial API for each service
+- Send messages to all / one platform from CLI
+- Unspaghettify the code
 
 ## Author
 
