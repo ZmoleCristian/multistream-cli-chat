@@ -1,0 +1,18 @@
+{
+  "name": "multistream-cli-chat",
+  "bin": {
+    "multistream-cli-chat": "./index.js"
+  },
+  "version": "0.0.1",
+  "description":"A command line interface tool that displays chat from multiple streaming services",
+  "main": "index.js",
+  "author": "TragDate",
+  "dependencies": {
+    "@twurple/auth": "^6.2.1",
+    "minimist": "^1.2.8",
+    "tiktok-live-connector": "^1.0.3",
+    "twitch-webchat": "^5.0.3",
+    "word-wrap": "^1.2.3",
+    "youtube-chat": "^2.2.0"
+  }
+}
